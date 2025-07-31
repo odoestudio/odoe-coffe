@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cøffee - a mess</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Kalam:wght@300;400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-stone-200 flex items-center justify-center min-h-screen font-patrick-hand overflow-hidden">
+
+    <!-- Main App Container -->
+    <div id="app-container" class="relative w-full max-w-sm h-[95vh] max-h-[800px] bg-grid-paper shadow-2xl rounded-3xl overflow-hidden flex flex-col">
+
+        <!-- Decorative Elements -->
+        <div class="coffee-stain top-4 left-4"></div>
+        <div class="coffee-stain bottom-20 right-[-20px]"></div>
+        <div class="tape top-[-10px] left-1/4"></div>
+        <div class="tape bottom-16 right-[-15px] rotate-[25deg]"></div>
+
+        <!-- App Header -->
+        <header id="app-header" class="p-4 flex justify-between items-center border-b-2 border-stone-400/50 z-10">
+            <h1 class="text-4xl font-gochi-hand text-stone-800">Cøffee</h1>
+            <div class="flex items-center space-x-3">
+                <button id="theme-toggle" class="text-2xl text-stone-600"><i class="fa-solid fa-moon"></i></button>
+                <i class="fa-regular fa-paper-plane text-2xl text-stone-600"></i>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main id="main-content" class="flex-grow relative overflow-y-auto p-4">
+            <!-- Swipe Screen -->
+            <div id="swipe-screen" class="screen active">
+                <div id="card-container" class="relative w-full h-[calc(100%-80px)] flex items-center justify-center">
+                    <!-- Cards will be injected here by JS -->
+                </div>
+                <div id="swipe-actions" class="absolute bottom-4 left-0 right-0 flex justify-around items-center p-4">
+                    <button class="action-btn bg-red-200/80 text-red-600"><i class="fa-solid fa-xmark"></i></button>
+                    <button class="action-btn bg-blue-200/80 text-blue-600"><i class="fa-solid fa-rotate-left"></i></button>
+                    <button class="action-btn bg-green-200/80 text-green-600"><i class="fa-solid fa-heart"></i></button>
+                </div>
+            </div>
+
+            <!-- Match History Screen -->
+            <div id="history-screen" class="screen hidden">
+                <h2 class="screen-title">Match Diary</h2>
+                <div id="history-content" class="space-y-4"></div>
+            </div>
+
+            <!-- Tea Feed Screen -->
+            <div id="feed-screen" class="screen hidden">
+                <h2 class="screen-title">The Tea Feed <i class="fa-solid fa-mug-hot text-amber-700"></i></h2>
+                <div id="feed-content" class="space-y-4"></div>
+            </div>
+
+            <!-- Crush Board Screen -->
+            <div id="crush-board-screen" class="screen hidden">
+                <h2 class="screen-title">Crush Board <i class="fa-solid fa-heart-crack text-pink-500"></i></h2>
+                <div id="crush-board-content" class="grid grid-cols-2 gap-4"></div>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav id="bottom-nav" class="w-full bg-paper-light/80 backdrop-blur-sm border-t-2 border-stone-400/50 p-2 flex justify-around items-center z-10">
+            <button data-screen="swipe-screen" class="nav-btn active"><i class="fa-solid fa-clone"></i><span>Swipe</span></button>
+            <button data-screen="history-screen" class="nav-btn"><i class="fa-solid fa-book-open"></i><span>History</span></button>
+            <button data-screen="feed-screen" class="nav-btn"><i class="fa-solid fa-comments"></i><span>Feed</span></button>
+            <button data-screen="crush-board-screen" class="nav-btn"><i class="fa-solid fa-thumbtack"></i><span>Crushes</span></button>
+        </nav>
+
+    </div>
+
+    <!-- Daily Brew Modal -->
+    <div id="daily-brew-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 hidden">
+        <div class="sketchy-border bg-paper-light p-6 rounded-lg w-11/12 max-w-md text-center relative">
+            <button id="close-modal" class="absolute top-2 right-3 text-3xl font-bold text-stone-500">&times;</button>
+            <h3 class="font-gochi-hand text-4xl text-amber-800 mb-2">Daily Brew!</h3>
+            <p class="font-kalam mb-4 text-stone-700">If you were a sandwich, what kind would you be and why?</p>
+            <button class="sketchy-border-sm bg-green-300 text-green-800 px-6 py-2 rounded-md font-bold">Get Boost!</button>
+        </div>
+    </div>
+
+    <a href="https://odoe.studio" target="_blank" class="fixed bottom-4 right-4 bg-black text-white text-xs px-3 py-1.5 rounded-full shadow-lg hover:bg-gray-800 transition-colors z-50">Made by Odoe</a>
+
+    <script src="js/data.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
