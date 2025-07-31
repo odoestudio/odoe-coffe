@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Kalam:wght@300;400;700&family=Patrick+Hand&display=swap');
+
+:root {
+    --paper-light: #fdfbf5;
+    --paper-dark: #2a2a2a;
+    --grid-light: rgba(200, 200, 200, 0.4);
+    --grid-dark: rgba(255, 255, 255, 0.1);
+    --text-light: #312e2b;
+    --text-dark: #e2e2e2;
+    --pen-blue: #2563eb;
+    --pencil-gray: #575757;
+}
+
+.dark {
+    --paper-light: var(--paper-dark);
+    --grid-light: var(--grid-dark);
+    --text-light: var(--text-dark);
+}
+
+.font-gochi-hand { font-family: 'Gochi Hand', cursive; }
+.font-patrick-hand { font-family: 'Patrick Hand', cursive; }
+.font-kalam { font-family: 'Kalam', cursive; }
+
+body {
+    transition: background-color 0.3s ease;
+}
+
+#app-container {
+    transition: background-color 0.3s ease;
+}
+
+.bg-grid-paper {
+    background-color: var(--paper-light);
+    background-image:
+        linear-gradient(var(--grid-light) 1px, transparent 1px),
+        linear-gradient(to right, var(--grid-light) 1px, var(--paper-light) 1px);
+    background-size: 20px 20px;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.sketchy-border {
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border: 2px solid var(--pencil-gray);
+    box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.2);
+}
+
+.sketchy-border-sm {
+    border-radius: 15px 255px 225px 15px/225px 15px 255px 15px;
+    border: 2px solid var(--pencil-gray);
+}
+
+.coffee-stain {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 10px solid rgba(90, 56, 32, 0.2);
+    border-radius: 50%;
+    opacity: 0.8;
+    z-index: 0;
+}
+
+.tape {
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    background-color: rgba(255, 224, 130, 0.4);
+    border-left: 1px solid rgba(0,0,0,0.1);
+    border-right: 1px solid rgba(0,0,0,0.1);
+    transform: rotate(-4deg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 20;
+}
+
+.screen {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.screen.hidden {
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
+    transform: translateY(10px);
+}
+
+.screen.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nav-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    color: var(--pencil-gray);
+    transition: color 0.2s, transform 0.2s;
+}
+
+.nav-btn i {
+    font-size: 24px;
+    margin-bottom: 2px;
+}
+
+.nav-btn.active {
+    color: var(--pen-blue);
+    transform: translateY(-2px);
+}
+
+.action-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    border: 2px solid rgba(0,0,0,0.2);
+    box-shadow: 2px 2px 0 0 rgba(0,0,0,0.1);
+    transition: transform 0.1s ease;
+}
+
+.action-btn:active {
+    transform: scale(0.95);
+}
+
+.screen-title {
+    font-family: 'Gochi Hand', cursive;
+    font-size: 2.5rem;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 1rem;
+    border-bottom: 2px dashed var(--pencil-gray);
+    padding-bottom: 0.5rem;
+}
+
+/* Card Styles */
+.swipe-card {
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    cursor: grab;
+    will-change: transform;
+    transition: transform 0.3s ease;
+    user-select: none;
+}
+
+.swipe-card:active {
+    cursor: grabbing;
+}
+
+.card-content {
+    width: 100%;
+    height: 100%;
+    background-color: var(--paper-light);
+    color: var(--text-light);
+    overflow: hidden;
+}
+
+.card-image {
+    width: 100%;
+    height: 65%;
+    object-fit: cover;
+}
+
+.card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white;
+    padding: 2rem 1rem 1rem;
+}
+
+.card-info h3 {
+    font-family: 'Gochi Hand', cursive;
+    font-size: 2rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.card-info p {
+    font-family: 'Kalam', cursive;
+    font-size: 1rem;
+}
+
+.card-sticker {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: #ff4757cc;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    font-family: 'Gochi Hand', cursive;
+    font-size: 1.2rem;
+    transform: rotate(10deg);
+    border-radius: 5px;
+    border: 2px solid white;
+}
+
+.dark #app-header, .dark #bottom-nav {
+    border-color: rgba(255,255,255,0.2);
+}
+
+.dark h1, .dark .text-stone-600, .dark .nav-btn, .dark .screen-title {
+    color: var(--text-dark);
+}
+
+.dark .nav-btn.active {
+    color: #60a5fa; /* Lighter blue for dark mode */
+}
+
+.dark .bg-paper-light\/80 {
+    background-color: var(--paper-dark);
+}
+
+.dark .sketchy-border, .dark .sketchy-border-sm {
+    border-color: #a3a3a3;
+}
+
+.dark .coffee-stain {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .tape {
+    background-color: rgba(255, 224, 130, 0.2);
+}
+
+.dark .card-content {
+    background-color: #3f3f46;
+    color: var(--text-dark);
+}
+
+.dark .bg-red-200\/80 { background-color: rgba(239, 68, 68, 0.3); }
+.dark .bg-blue-200\/80 { background-color: rgba(59, 130, 246, 0.3); }
+.dark .bg-green-200\/80 { background-color: rgba(34, 197, 94, 0.3); }
+
